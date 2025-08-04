@@ -25,7 +25,7 @@ print(f"The Number Of Rows are {df.shape[0]}, and Columns are {df.shape[1]}.")
 # 读取数据的类型
 df.info()
 
-# 修改数据类型
+## 修改数据类型
 df['discounted_price']
 df['discounted_price'] = df['discounted_price'].str.replace('₹','')
 df['discounted_price'] = df['discounted_price'].str.replace(',','')
@@ -46,14 +46,14 @@ df.info()
 
 # 处理异常值
 
-# 统计异常值的数量
+## 统计异常值的数量
 df['rating'].value_counts()
 df['rating_count'].value_counts()
 
-# 读取异常值所在的行
+## 读取异常值所在的行
 df.query('rating == "|" ')
 
-# 处理异常值数据
+## 处理异常值数据
 df['rating'] = df['rating'].str.replace('|', '3.9').astype('float64')
 df['rating']
 
