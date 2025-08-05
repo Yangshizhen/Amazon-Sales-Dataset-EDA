@@ -176,3 +176,41 @@ correlation_matrix = df.corr()
 sns.heatmap(correlation_matrix,annot=True)
 plt.show()
 
+# 相关分析
+
+## 皮尔逊相关系数
+pearson_correlation_matrix = df.corr()
+print(pearson_correlation_matrix)
+
+sns.heatmap(
+  pearson_correlation_matrix,
+  annot=True,
+  cmap="coolwarm"
+)
+plt.title("Correlation Matrix (Pearson)")
+plt.show()
+
+## 斯皮尔曼相关系数
+spearman_correlation_matrix = df.corr(method="spearman")
+print(spearman_correlation_matrix)
+
+sns.heatmap(spearman_correlation_matrix,annot=True,cmap="coolwarm")
+plt.title("Correlation Matrix (Spearman)")
+plt.show()
+
+correlation_coefficient = np.corrcoef(df['autual_price'],df['rating'])[0,1]
+print(correlation_coefficient)
+
+# 分组和聚合
+grouped_df = df.groupby('category')['rating'].mean()
+print(grouped_df)
+
+mean_sales_by_category = df.groupby('category')['rating'].mean()
+print(mean_sales_by_category)
+
+median_sales_by_age = df.groupby('review_content')['rating'].median()
+print(median_sales_by_age)
+
+std_price_by_brand = df.groupby('product_name')['rating'].std()
+print(std_price_by_brand)
+
